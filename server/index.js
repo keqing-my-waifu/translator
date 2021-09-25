@@ -12,7 +12,7 @@ app.use('/', Translate)
 const App = async () => {
     try {
 
-        httpServer.listen(5000, () => console.log(`server listening on 5000`))
+        httpServer.listen(process.env.PORT, () => console.log(`server listening on 5000`))
     } catch(e){
         console.log(e)
     }

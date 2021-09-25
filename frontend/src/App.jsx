@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Container, Button, Grid, Input, AppBar, Typography, Toolbar, TextField, Menu, List, ListItem, ListItemText, MenuItem } from '@material-ui/core'
+import { Container, Button, Grid, Input, AppBar, Typography, Toolbar, TextField, Menu, List, ListItem, ListItemText, MenuItem, Box } from '@material-ui/core'
 
 import { makeStyles, alpha } from '@material-ui/core/styles';
 
@@ -33,11 +33,21 @@ const useStyles = makeStyles(theme => ({
   },
   gridItem: {
     height: '250px'
+  },
+  textarea: {
+    color: 'rgba(0, 0, 0, 0.87)',
+    height: 'auto',
+    minHeight: '189px',
+    border: '1px #8080807d solid',
+    backgroundColor: 'white',
+    borderRadius: '5px',
+    padding: '18px 14px',
+    fontFamily: `Roboto, Helvetica, Arial, sans-serif`
   }
 }));
 
 const listInMenu = [
-  'en', 'ru', 'al', 'dz', 'am', 'au', 'at', 'az', 'by', 'br', 'cn', 'fr', 'de', 'es', 'ua',
+  'en', 'ru', 'az', 'fr', 'de', 'es'
 ]
 
 function App() {
@@ -93,15 +103,15 @@ function App() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(tson)
       })
-        .then((res) => { 
-          callback = res.json()
+        .then( async (res) => { 
+          callback = await res.json()
         })
     }
     catch (e) {
       console.log(e)
     }
-    // setInput2(callback.text)
-    console.log(callback)
+    setInput2(callback.text)
+    console.log(callback.text)
   }
 
   return (
@@ -181,9 +191,14 @@ function App() {
                 </Grid>
               </Menu>
             </div>
-            <TextField defaultValue={input2} disabled maxRows={15} minRows={8} multiline={true} id="outlined-basic" label="Введите текст" variant="outlined" className={classes.Inputs} />
+            <div className={classes.textarea}>
+              <Typography>
+                {input2}
+              </Typography>
+            </div>
           </Grid>
         </Grid>
+
         <Button onClick={handleFetchData} className={classes.Button} color='primary' variant='contained' >
           Перевести
         </Button>
