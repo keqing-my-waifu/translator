@@ -1,0 +1,44 @@
+{
+  "name": "google-translate-free",
+  "version": "2.4.5",
+  "description": "A free and unlimited API for Google Translate",
+  "main": "index.js",
+  "scripts": {
+    "test": "xo && nyc ava",
+    "coverage": "nyc report --reporter=text-lcov | coveralls && nyc report --reporter=text-lcov > coverage.lcov && codecov"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sufeiweb/google-translate-free.git"
+  },
+  "keywords": [
+    "translate",
+    "translator",
+    "google",
+    "translate",
+    "api",
+    "free",
+    "language"
+  ],
+  "author": {
+    "name": "xerath",
+    "email": "sufei_web@163.com",
+    "url": "https://webapp.xerath.top"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@vitalets/google-translate-token": "^1.1.0",
+    "configstore": "^2.0.0",
+    "got": "^9.6.0"
+  },
+  "devDependencies": {
+    "ava": "^0.15.2",
+    "codecov": "^1.0.1",
+    "coveralls": "^2.11.11",
+    "nyc": "^7.0.0",
+    "xo": "^0.16.0"
+  },
+  "xo": {
+    "space": 4
+  }
+}
